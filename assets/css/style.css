@@ -53,6 +53,15 @@ html, body {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
+.img-description {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(0px 0px 99.9% 99.9%);
+    overflow: hidden;
+}
+
 .container {
     width: 111rem;
     margin: auto;
