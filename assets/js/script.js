@@ -10,12 +10,34 @@ const shortenedLinks = localStorage
     .getItem('shortenedLinks') !== null ? localStorageShortenedLinks : [] 
 
 
-
-function toggleMenu() {
-    menu.classList.toggle('header__menu--open')
-    burgerBtn.classList.toggle('burger-btn--open')
+function openMenu() {
+    menu.classList.add('header__menu--open')
+    burgerBtn.classList.add('burger-btn--open')
+    setTimeout( () => menu.classList.add('animate'), 1)
 }
+
+function closeMenu() {
+    menu.classList.remove('animate')
+    setTimeout( () => menu.classList.remove('header__menu--open'), 200)
+    burgerBtn.classList.remove('burger-btn--open')
+}
+
+function isMenuOpen() {
+    return menu.classList.contains('header__menu--open')
+}
+
+
+function toggleMenu(event) {
+    if (event.type === 'touchstart') event.preventDefault()
+    isMenuOpen()
+        ? closeMenu()
+        : openMenu()
+}
+
 burgerBtn.addEventListener('click', toggleMenu)
+burgerBtn.addEventListener('touchstart', toggleMenu)
+
+
 
 function saveResults(originalLink, shortenedLink) {
     shortenedLinks.push({'originalLink': originalLink, 'shortenedLink': shortenedLink})

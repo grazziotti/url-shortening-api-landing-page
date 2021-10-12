@@ -84,7 +84,9 @@ html, body {
     display: none;
     width: 2.4rem;
     height: 2.1rem;
+    border: 0;
     border-top: .3rem solid; 
+    background-color: transparent;
     color: var(--grayish-violet);
     transition: .3s;
 }
@@ -436,8 +438,12 @@ html, body {
     padding: 8rem 0;
 }
 
-.footer__logo {
+.footer__logo-container {
     flex: 2;
+}
+
+.footer__logo {
+    display: inline-flex;
 }
 
 .footer__menu {
@@ -519,8 +525,6 @@ html, body {
     color: var(--cyan);
 }
 
-
-
 @media (max-width: 1130px) {
     .container {
         width: auto;
@@ -537,6 +541,20 @@ html, body {
     .container {
         margin-left: 2.4rem;
         margin-right: 2.4rem;
+    }
+
+    [data-anime] {
+        opacity: 0;
+        transition: .3s;
+    }
+    
+    [data-anime="top"] {
+        transform: translateY(-2rem);
+    }
+    
+    [data-anime].animate {
+        opacity: 1;
+        transform: translate(0, 0);
     }
 
     /* header */
